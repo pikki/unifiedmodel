@@ -1,21 +1,39 @@
-
 version: 2
 
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+  - name: cleaned_bp
+    description: "This model cleans and parses blood pressure data into systolic and diastolic values."
+    columns:
+      - name: ENCOUNTER_ID
+        description: "The unique identifier for each medical encounter."
+        tests:
+          - not_null
+      - name: BP_VALUE
+        description: "The original raw BP reading."
+        tests:
+          - not_null
+      - name: systolic_bp
+        description: "Cleaned systolic BP value."
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 60
+              max_value: 300
+      - name: diastolic_bp
+        description: "Cleaned diastolic BP value."
+        tests:
+          - not_null
+          - accepted_range:
+              min_value: 40
+              max_value: 150
+      - name: repeat_rank
+        description: "Rank of the BP reading for each encounter."
+      - name: notes
+        description: "Notes indicating any data quality issues."
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+sources:
+  - name: unified_model_source
+    database: UNIFIED_MODEL
+    schema: UNIFIED_SCHEMA
+    tables:
+      - name: BP_INPUT

@@ -1,4 +1,4 @@
-![Starting Point](<alt="image" src="https://github.com/pikki/unifiedmodel/assets/5861934/d4035df8-5336-4f56-a6bf-a2e7b51f7e5a">)
+![Starting Point](https://github.com/pikki/unifiedmodel/assets/5861934/d4035df8-5336-4f56-a6bf-a2e7b51f7e5a)
 
 # DBT Model for Blood Pressure Data Cleaning
 

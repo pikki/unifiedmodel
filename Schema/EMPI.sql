@@ -1,36 +1,35 @@
 -- Dimension Tables
-CREATE TABLE DimPatient (
-    patient_id SERIAL PRIMARY KEY,
-    external_patient_id STRING,
-    first_name STRING,
-    last_name STRING,
-    date_of_birth DATE,
-    -- Add additional patient-related attributes as needed
+CREATE OR REPLACE TABLE DimPatient (
+    patient_id BIGINT AUTOINCREMENT PRIMARY KEY,
+    external_patient_id VARCHAR,
+    first_name VARCHAR,
+    last_name VARCHAR,
+    date_of_birth DATE
 );
 
-CREATE TABLE DimAddress (
-    address_id SERIAL PRIMARY KEY,
-    patient_id INT REFERENCES DimPatient(patient_id),
-    address STRING,
-    -- Add additional address-related attributes as needed
+CREATE OR REPLACE TABLE DimAddress (
+    address_id BIGINT AUTOINCREMENT PRIMARY KEY,
+    patient_id BIGINT REFERENCES DimPatient(patient_id),
+    address VARCHAR
 );
 
-CREATE TABLE DimPhoneNumber (
-    phone_id SERIAL PRIMARY KEY,
-    patient_id INT REFERENCES DimPatient(patient_id),
-    phone_type STRING, -- e.g., Cellphone, Homephone
-    phone_number STRING,
-    -- Add additional phone-related attributes as needed
+CREATE OR REPLACE TABLE DimPhoneNumber (
+    phone_id BIGINT AUTOINCREMENT PRIMARY KEY,
+    patient_id BIGINT REFERENCES DimPatient(patient_id),
+    phone_type VARCHAR, 
+    phone_number VARCHAR
 );
 
--- Fact Table
-CREATE TABLE FactPatientEvent (
-    event_id SERIAL PRIMARY KEY,
-    patient_id INT REFERENCES DimPatient(patient_id),
-    event_type STRING, -- e.g., Create, Update
-    event_timestamp TIMESTAMP,
-    -- Add additional event-related attributes as needed
+CREATE OR REPLACE TABLE FactPatientEvent (
+    event_id BIGINT AUTOINCREMENT PRIMARY KEY,
+    patient_id BIGINT REFERENCES DimPatient(patient_id),
+    event_type VARCHAR, 
+    event_timestamp TIMESTAMP
 );
+
+
+
+
 
 
 

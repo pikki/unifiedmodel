@@ -291,6 +291,12 @@ CREATE OR REPLACE TABLE DIM_Encounter (
     AppointmentReason STRING
 );
 
+CREATE OR REPLACE TABLE Dim_Assessment (
+    AssessmentID INT,
+    ICDCode STRING,
+    ICDName STRING
+);
+
 
 CREATE OR REPLACE TABLE FACT_Allergies (
   ID bigint AUTOINCREMENT NOT NULL,

@@ -268,6 +268,30 @@ CREATE OR REPLACE TABLE DIM_Xray (
   PRIMARY KEY (ID)
 );
 
+
+
+CREATE OR REPLACE TABLE DIM_Encounter (
+    FacilityID INT,
+    VisitTypedesc STRING,
+    VisitType STRING,
+    VisitStatusdesc STRING,
+    VisitStatus STRING,
+    DepartureTime TIMESTAMP,
+    ArrivedTime TIMESTAMP,
+    TimeOut TIMESTAMP,
+    TimeIn TIMESTAMP,
+    EndTime TIMESTAMP,
+    StartTime TIMESTAMP,
+    LockFlag INT,
+    EncounterType INT,
+    ResourceID INT,
+    EncounterID INT,
+    PatientID INT,
+    ProviderID INT,
+    AppointmentReason STRING
+);
+
+
 CREATE OR REPLACE TABLE FACT_Allergies (
   ID bigint AUTOINCREMENT NOT NULL,
   DataSourceID int,
